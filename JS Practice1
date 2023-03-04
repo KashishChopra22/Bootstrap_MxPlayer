@@ -1,0 +1,31 @@
+
+ 
+let x= prompt("Enter first number");
+x=Number.parseInt(x);
+let y= prompt("Enter second number");
+y=Number.parseInt(y);
+let z= prompt("Enter third number");
+z=Number.parseInt(z);
+
+let greatest=0;
+if(x>=y && x>=z){
+    greatest=x
+}
+else if(y>=x && y>=z){
+    greatest=y
+}
+else{
+        greatest=z;
+}
+document.write("Largest number is :" +greatest);
+
+let sum=0;
+if(x>=40 && y>=40 && z>=40){
+   
+    sum=x+y+z;
+    document.write("Sum is" +sum);
+
+}
+else{
+    document.write("Not 40")
+}
