@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Vite App</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+    rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+  <script src="https://cdn.tailwindcss.com/3.2.4"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        fontFamily: {
+          sans: ["Roboto", "sans-serif"],
+          body: ["Roboto", "sans-serif"],
+          mono: ["ui-monospace", "monospace"],
+        },
+      },
+      corePlugins: {
+        preflight: false,
+      },
+    };
+  </script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+  </head>
+  <body >
+   
+   <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
+    <div class="flex justify-between items-center">
+      <span class="text-2xl font-[Poppins] cursor-pointer">
+<img src="data:image/png;base64,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" alt="Img" class="h-10 inline">Portfolio
+      </span>
+      <span class="text-3xl cursor-pointer mx-2 md:hidden block" id="burger">
+       
+        <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+      </span>
+    </div>
+    <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0
+    top-[-400px] transition-all ease-in duration-500 hidden md:block" id="menu">
+      <li class="mx-4 my-6 md:my-0"><a href="" class="text-xl hover:text-cyan-500 duration-500">Home</a></li>
+      <li class="mx-4 my-6 md:my-0"><a href="" class="text-xl hover:text-cyan-500 duration-500">About</a></li>
+      <li class="mx-4 my-6 md:my-0"><a href="" class="text-xl hover:text-cyan-500 duration-500">Service</a></li>
+      <li class="mx-4 my-6 md:my-0"><a href="" class="text-xl hover:text-cyan-500 duration-500">Contact</a></li>
+      <li class="mx-4 my-6 md:my-0"><a href="" class="text-xl hover:text-cyan-500 duration-500">Resume</a></li>
+
+    </ul>
+   </nav>
+
+
+
+
+<!-- Section 2 -->
+
+   <div class="relative w-100 h-100">
+<img src="https://prod.ucwe.capgemini.com/in-en/wp-content/uploads/sites/18/2022/09/EXPERIENCED-PROFESSIONALS-1.jpg" alt="Avatar" class="lg:w-full h-600 md:h-screen lg:h-screen transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" />
+    <div class="absolute w-full h-full top-0 left-0 rounded-full text-white text-lg flex justify-left items-left">
+
+      <div class="lg:mx-[40px]">
+<h1>UI/UX Designer!</h1>
+<h2>This is Kashish Chopra</h2>
+
+<h2>200+</h2>
+<p>Projects Completed</p>
+
+<h2>100+</h2>
+<p>Happy Clients</p>
+</div>
+    </div>
+  </div>
+
+<!-- <div class="grid grid-cols-2 gap-4">
+<div>
+  <img src="https://prod.ucwe.capgemini.com/in-en/wp-content/uploads/sites/18/2022/09/EXPERIENCED-PROFESSIONALS-1.jpg" alt="" class="h-100">
+</div>
+<div>
+  <h1>Text </h1>
+  <h1>Resume</h1>
+</div>
+</div> -->
+
+<!-- <div class="relative">
+  <img src="" alt="">
+<div class="bgimage">
+  <div class="overlay">
+    <h1>Hello</h1>
+    <p>I m this ...</p>
+  </div>
+</div>
+</div> -->
+
+<!-- Section 3 About Us-->
+
+<section class="bg-gray-800">
+<div class="grid grid-cols-1 mt-8 md:grid-cols-3 lg:mx-[200px] gap-9 bg-gray-900">
+
+<div class="aspect-w-16 aspect-h-9 max-w-sm rounded overflow-hidden shadow-lg bg-gray-800 text-center">
+<img src="https://i.pinimg.com/736x/36/a2/e2/36a2e242bfe3ac039e0618fbaaef7596.jpg" class="w-full object-cover mt-[50px] overflow-hidden">
+</div>
+
+<div class="md:col-span-2">
+<div class="text-white fw-semibold justify-left items-left" >
+<h1>About Me</h1>
+<div class="bg-pink-800 w-[120px] h-[5px]"></div>
+</div>
+
+<div class="text-white mt-4">
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus perferendis, sed a accusamus pariatur porro. Labore a impedit adipisci, iure debitis, illum commodi dolorem excepturi voluptates vitae dolore, molestias eius! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore atque accusantium et impedit quas repellendus culpa veritatis odio nihil blanditiis at eligendi molestias tempore commodi quia quasi, minima nam? Placeat adipisci tenetur similique non aperiam voluptatem esse sint, aliquid quas!</p>
+</div>
+<div class="flex text-white fw-semibold mt-6">
+  <div><h2><a href="#" class="text-2xl hover:border-b-2 border-red-800">Skills</a> </h2></div>
+  <div class="mx-8"><h2><a href="#" class="text-2xl hover:border-b-2 border-red-800">Experience</a> </h2></div>
+  <div><h2><a href="#" class="text-2xl hover:border-b-2 border-red-800">Education</a> </h2></div>
+</div>
+
+<div class="mt-4 text-white">
+<h2>UI/UX</h2>
+<p>Designing web/ App Interfaces</p>
+</div>
+
+<div class="mt-3 text-white">
+  <h2>Web Development </h2>
+  <p>Web App Development</p>
+  </div>
+
+  <div class="mt-4 text-white">
+    <h2>App Development</h2>
+    <p>Building Android/IOS Apps</p>
+    </div>
+</div>
+
+</div>
+</section>
+
+<!-- Section 4 -->
+
+<section class="mt-6 bg-gray-900 " >
+
+  <div class="text-center fw-semibold text-white pt-8">
+    <h1>My Services </h1>
+    <div class="bg-pink-800 w-[100px] h-[5px] mx-auto"></div>
+
+  </div>
+  <div class="grid grid-cols-1 mt-8 md:grid-cols-3 lg:mx-[200px] gap-9 bg-gray-900 mb-8">
+
+<div class="text-white">
+  <div class="max-w-sm rounded overflow-hidden items-center shadow-2xl shadow-gray-800 bg-black">
+  
+  <div class="text-5xl text-center text-pink-800 mt-9">
+    <ion-icon name="brush"></ion-icon>
+  </div>
+  <div>
+    <h2 class="text-3xl text-center">Web Design</h2>
+  </div>
+  <div class="text-center mt-5 mb-9">
+    <p class="text-center">Lorem dolor sit, amet consectetur adipisicing elit. Minima soluta quae quasi, aut  nulla, saepe obcaecati ullam,  corporis eaque aperiam animi.magnam suscipit enim! ollitia incidunt praesentium corporis eaque aperiam animi.</p>
+  </div>
+  </div>
+</div>
+
+
+<div class="text-white">
+  <div class="max-w-sm rounded overflow-hidden items-center shadow-2xl shadow-gray-800 bg-black">
+  
+  <div class="text-5xl text-center text-pink-800 mt-9">
+   <ion-icon name="barcode"></ion-icon>
+  </div>
+  <div>
+    <h2 class="text-3xl text-center">BackEnd</h2>
+  </div>
+  <div class="text-center mt-5 mb-9">
+    <p class="text-center">Lorem dolor sit, amet consectetur adipisicing elit. Minima soluta quae quasi, aut  nulla, saepe obcaecati ullam,  corporis eaque aperiam animi.magnam suscipit enim! ollitia incidunt praesentium corporis eaque aperiam animi.</p>
+  </div>
+  </div>
+</div>
+
+
+<div class="text-white">
+  <div class="max-w-sm rounded overflow-hidden items-center shadow-2xl shadow-gray-800 bg-black">
+  
+  <div class="text-5xl text-center text-pink-800 mt-9">
+    <ion-icon name="code-slash"></ion-icon>
+  </div>
+  <div>
+    <h2 class="text-3xl text-center">Apps Design</h2>
+  </div>
+  <div class="text-center mt-5 mb-9">
+    <p class="text-center">Lorem dolor sit, amet consectetur adipisicing elit. Minima soluta quae quasi, aut  nulla, saepe obcaecati ullam,  corporis eaque aperiam animi.magnam suscipit enim! ollitia incidunt praesentium corporis eaque aperiam animi.</p>
+  </div>
+  </div>
+</div>
+
+
+    </div>
+</section>
+
+<!-- Section 5 -->
+<section class="mt-6 bg-gray-200 ">
+    <div class="text-center fw-semibold pt-8">
+        <h1>My Skills </h1>
+        <div class="bg-pink-800 w-[90px] h-[5px] mx-auto"></div>
+
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:mx-[200px]">
+<div class="mt-7">
+    <h2 class="font-semibold">My Creative Skills & Experience</h2>
+    <p class="mt-4 mb-8 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque repellat fugit tempora blanditiis quos maxime nulla, officiis animi necessitatibus mollitia reiciendis totam ipsum quod quibusdam similique quo harum ad. Commodi explicabo provident quia at excepturi voluptate quibusdam deserunt modi quaerat!</p>
+   <div class="md:text-left sm:text-center"> <button class="bg-pink-800 hover:bg-white text-white hover:text-pink-800 font-bold py-2 px-4 border-2 border-pink-700 rounded ">
+        Read More
+      </button>
+      </div>
+</div>
+<div class="mt-7 font-semibold">
+<h2>HTML</h2>
+
+<div class="w-full bg-gray-300 rounded-full dark:bg-gray-700">
+    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 90%"> 90%</div>
+  </div>
+
+<h2 class="mt-5">CSS</h2>
+<div class="w-full bg-gray-300 rounded-full dark:bg-gray-700">
+    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 85%"> 85%</div>
+  </div>
+<h2 class="mt-5">Bootstrap</h2>
+<div class="w-full bg-gray-300 rounded-full dark:bg-gray-700">
+    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 95%"> 95%</div>
+  </div>
+<h2 class="mt-5">Tailwind</h2>
+<div class="w-full bg-gray-300 rounded-full dark:bg-gray-700">
+    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 80%"> 80%</div>
+  </div>
+
+</div>
+      </div>
+</section>
+
+<!-- Section 6 -->
+<section class="mt-6 bg-gray-800 ">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:mx-[200px]">
+        <div class="text-white mb-8 mt-9">
+            <p class="text-4xl">Contact Me</p>
+           <div class="flex mt-8 text-xl"> 
+            <span class="bi bi-envelope-fill mr-2 text-pink-800"></span>
+             <p> contact@gmail.com</p>
+            </div>
+           
+           <div class="flex mt-5">
+            <span class="bi bi-telephone-fill mr-3 text-pink-800"></span>
+            <p>0123456789</p>
+           </div>
+          
+           <div class="flex mt-5 text-2xl">
+            <span class="bi bi-facebook mr-2"></span>
+            <span class="bi bi-twitter mx-2"></span>
+            <span class="bi bi-instagram mx-2"></span>
+            <span class="bi bi-linkedin mx-2"></span>
+           </div>
+
+           <div class="mt-9">
+            <button class="bg-pink-800 hover:bg-white text-white hover:text-pink-800 font-bold py-2 px-9 border-2 border-pink-700 rounded">
+                Download CV
+              </button>
+           </div>
+        </div>
+
+        <div class="mt-9">
+
+<form>
+  <div class="relative z-0 w-full mb-6 group">
+      <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Name</label>
+  </div>
+  <div class="relative z-0 w-full mb-6 mt-9  group">
+      <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email Address</label>
+  </div>
+
+  <div class="relative z-0 w-full mb-6 mt-9 group">
+    <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+    <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Message</label>
+</div>
+<div class="mt-9">
+    <button class="bg-pink-800 mt-5 hover:bg-white text-white hover:text-pink-800 font-bold py-2 px-9 border-2 border-pink-700 rounded">
+        Submit
+      </button>
+   </div>
+ 
+
+ 
+</form>
+
+        </div>
+</div>
+</section>
+
+   <script>
+    function Menu(e) {
+      let list= document.querySelector('ul');
+      e.name === 'menu' ?(e.name="close", list.classList.add('top-[80px]'),list.classList.add('opacity-100')) :( e.name="menu",  list.classList.remove('top-[80px]'),list.classList.remove('opacity-80'))
+
+      e.name === 'menu' ? e.name= "close" : e.name="menu"
+      console.log(e);
+    }
+
+
+    const burger= document.querySelector('#burger');
+    const menu=document.querySelector('#menu');
+
+    burger.addEventListener('click',()=>{
+      if(menu.classList.contains('hidden')){
+        menu.classList.remove('hidden')
+      }
+      else{
+        menu.classList.add('hidden');
+      }
+    })
+   </script>
+
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,6 @@
+Step1: Start
+Step2: Displayed current date and time(of system) using the Date() in javascript
+Step3: The new Date() will create a date object
+Step4: Stop
+
+rx.json= {https://stackblitz.com/edit/web-platform-wyayfi?file=index.html}

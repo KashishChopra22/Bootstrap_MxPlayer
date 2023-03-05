@@ -1,0 +1,10 @@
+Step1: Start
+Step2: Created a button in html file and assign a function to it.
+Step3: When user click on that button the respected function in js file is called 
+Step4: The function will first prompt the user to enter a string you want to split into array
+Step5: str.split() function will split into array
+Step6: The html file has h2 tag which has id and in js file we get the id and prints the msg 
+Step7: The html file has another p tag which has id and in js file we get the id and prints the array
+Step8: Stop
+
+rx.json file= {https://stackblitz.com/edit/web-platform-wyayfi?file=index.html}

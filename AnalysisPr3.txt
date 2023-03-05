@@ -1,0 +1,9 @@
+Step1: Start
+Step2: Created a function in js file the js function will be called as the file is open
+Step3: The prompt box will open and user will enter a string
+Step4: The function takes string as a argument and check whether the string is empty or not 
+Step5: If the String is empty the document.write method will return String is empty
+Step6: Otherwise String is not empty
+Step7: Stop
+
+rx.json file={https://stackblitz.com/edit/web-platform-wyayfi?file=index.html}

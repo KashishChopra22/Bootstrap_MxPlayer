@@ -1,0 +1,7 @@
+Step1: Start
+Step2: Using the substring() function in js,we can extract the specified no. of characters from string
+Step3: The function is substring(start, end)
+Step4: And then print the message using document.write() function
+Step5: Stop
+
+rx.json file= {https://stackblitz.com/edit/web-platform-wyayfi?file=index.html}

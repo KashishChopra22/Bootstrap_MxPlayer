@@ -1,0 +1,11 @@
+Step1: Start
+Step2: Using the different array methods.
+Step3: Created an aray with the Subjects name
+Step4: First use Array.push() mehtod,it will add a new element to the array at the last
+Step5: Then use Array.pop() method, it will pop the last elemnt from the array 
+Step6: Array.shift() method, it will delete the first element and shifts the next element to the left
+Step7: delete array[index] method, it will delete the element but creates an empty hole in the array
+Step8: Stop
+
+
+rx.json file= {https://stackblitz.com/edit/web-platform-wyayfi?file=index.html}
