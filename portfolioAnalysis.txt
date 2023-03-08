@@ -1,0 +1,15 @@
+Step1: Start
+
+Step2: In the first section I created a navbar which has logo in left side and links on right side and in the mobile screen the right side section will be hide and collapse on menu button. 
+
+Step3: In the second section I created a div whose position is relative ans paste one image inside that and also create one div with the position absolute and write some content on it.
+
+Step4: In the third section I created About Me Section uses grid-cols in tailwind and created a grid-col-1 on mobile screen So an image in one grid col and some content in another grid column and in the large screen both image and content will displayed in one row by using lg:grid-cols-2.
+
+Step5: In the fourth section I created My Services Section in which on mobile screen I used grid-cols-one and created three cards and on the large screen I used grid-cols-three so three cards will be displayed side by side in one row.
+
+Step6: In the fifth section I created My Skills Section uses grid-cols-one and created one column on mobile screen which contains some content and in another column, contains some progress bar using tailwind and in the large screen both columns displayed in two columns one row using lg:grid-cols-2
+
+Step7: In the Sixth section I created Contact Me Section uses grid-cols-one and created one column in mobile screen which contains Contact details and one button and created one more column in this section which contains Query form .On the large screen both columns will be displayed in one row using lg:grid-cols-2
+
+Step8: Stop
