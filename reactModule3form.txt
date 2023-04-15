@@ -1,0 +1,527 @@
+import React from 'react'
+import { useState } from "react";
+
+export default function Form() {
+  const [input, setInput] = useState([{ firstName: "" , lastName: "", email: ""} ]);
+  const [view, setView] = useState("Hide");
+  const [tableValue, setTableValue] = useState([]);
+ 
+
+  const[nameError,setNameError]= useState('');
+const[dobError,setDobError]= useState('');
+const[pobError,setPobError]= useState('');
+const[pinError,setPinError]= useState('');
+
+  let getValue = (i, e) => {
+    let newInput = [...input];
+    newInput[i][e.target.name] = e.target.value;
+    setInput(newInput);
+
+
+    console.log(newInput[i][e.target.name]);
+
+    if([e.target.firstName] == ""){
+          setNameError("Name Length must be greater than 3");
+        }
+        else{
+          setNameError(false);
+        }
+
+  }
+  let addFormFields = () => {
+    setInput([...input, { firstName: "" , lastName: "", email: ""}])
+  }
+
+  let removeFormFields = (i) => {
+    let newInput = [...input];
+    newInput.splice(i, 1);
+    setInput(newInput);
+  }
+
+  let formSubmit = (event) => {
+    event.preventDefault();
+    let arr = [];
+    for(let i in input) {
+      arr.push({...input[i]})
+      console.log(arr);
+    }
+    setTableValue(arr)
+    setView("Show")
+  }
+  return (
+    <>
+    <div className='form-box'>
+
+      <form onSubmit={formSubmit} >
+
+        {input.map((element, index) => (
+          <div className="form" key={index}>
+          
+            <label>First Name</label>
+           <input type="text" name="firstName" value={element.firstName || ""} onChange={(e) => getValue(index, e)}
+            />
+            { nameError ? <span style={{color:"red"}}>{nameError}</span> : " "} 
+
+            <label>Last Name</label>
+           <input type="text" name="lastName" value={element.lastName || ""} onChange={(e) => getValue(index, e)}
+            />
+            <label>Email</label>
+            <input type="email" name="email" value={element.email || ""} onChange={(e) => getValue(index, e)}
+            />
+            {index ? (
+              <button
+                type="button"
+                className="btn-danger btn-sm mt-2 "
+                onClick={() => removeFormFields(index)}
+              >
+                Remove
+              </button>
+            ) : null}
+          </div>
+        ))}
+          <button
+            className="btn btn-info m-2"
+            type="button"
+            onClick={() => addFormFields()}
+          > Add</button>
+          <button className="btn btn-success m-2" type="submit">
+            Submit
+          </button>
+      </form>
+      </div>
+      
+      {view === "Show" ? <Table TableData={tableValue}/> : null}
+      </>
+  )
+}
+
+
+
+// export default function Form() {
+//   const [name, setName]= useState();
+//   const [dob, setDob] = useState();
+//   const [pob, setPob] = useState();
+//   const [pin, setPin] = useState();
+
+ 
+// const[nameError,setNameError]= useState('');
+// const[dobError,setDobError]= useState('');
+// const[pobError,setPobError]= useState('');
+// const[pinError,setPinError]= useState('');
+
+// const nameregex = "^[A-Za-z]\\w{5, 29}$";
+
+// // Onchange event on each input element
+// const handleName = (e) =>{
+//   let name = e.target.value;
+//   console.log(name);
+//   if(name.length < 3){
+//     setNameError("Name Length must be greater than 3");
+//   }
+//   else{
+//     setNameError(false);
+//   }
+// }
+// const handleDob = (e) =>{
+//   let dob = e.target.value;
+//   if(dob == ""){
+//     setDobError("Please Choose dob");
+//   }
+
+//   else{
+//     setDobError(false);
+//   }
+// }
+
+// const handlePob = (e) =>{
+//   let pob = e.target.value;
+//   if(pob.length < 4){
+//     setPobError("Please Enter a valid City Name");
+//   }
+//   else{
+//     setPobError(false);
+//   }
+// }
+
+
+// const handlePin = (e) =>{
+//   let pin = e.target.value;
+//   if(pin.length != 6){
+//     setPinError("Please Enter a 6-digit valid Pin Code");
+//   }
+//   else{
+//     setPinError(false);
+//   }
+// }
+// // submit button 
+// const handleSubmit = (e) =>{
+
+//   let arr = [];
+//       for(let i in input) {
+//         arr.push({...input[i]})
+//       }
+//       setTableValue(arr)
+//       setView("Show")
+    
+
+
+
+//   let name = e.target[0].value;
+
+//   if(name == ""){
+//     setNameError("Name Cannot blank");
+//     e.preventDefault();
+//   }
+//     else if(name.length < 3){
+//     setNameError("Name Length must be greater than 3");
+  
+//   }
+//   else{
+//     setNameError(false);
+//   }
+  
+//   let dob = e.target[1].value;
+
+//   if(dob == ""){
+//     setDobError("Please Choose dob");
+//   }
+
+//   let pob = e.target[2].value;
+//   if(pob == ""){
+//     setPobError("Please Enter City");
+//   }
+//   else if(pob.length < 4){
+//     setPobError("Please Enter a valid City Name");
+//   }
+//   else{
+//     setPobError(false);
+//   }
+
+//   let pin= e.target[7].value;
+//   if(pin == ""){
+//     setPinError("Please Enter Pin Code");
+//   }
+//   else if(pin.length != 6){
+//     setPinError("Please Enter a 6-digit valid Pin Code");
+//   }
+//   else{
+//     setPinError(false);
+//   }
+// }
+//   return (
+//     <form onSubmit={handleSubmit}>
+
+// <div class="container">
+//    <div class="row g-3 align-items-center mt-4">
+//   <div class="col-md-1">
+//     <label for="username" class="col-form-label">Full Name</label>
+//     </div>
+
+//     <div class="col-md-5">
+//     <input type="text" id="username" class="form-control" aria-describedby="passwordHelpInline" onChange={handleName} placeholder="Enter in Firstname Middlename Lastname Format" name='name' value={name}/>
+//     { nameError ? <span style={{color:"red"}}>{nameError}</span> : " "} 
+//   </div>
+//   </div>
+
+
+//   <div class="row g-3 align-items-center mt-4">
+//   <div class="col-md-1">
+//     <label for="dob" class="col-form-label">Date of Birth</label>
+//     </div>
+
+//     <div class="col-md-3">
+//     <input type="date" id="dob" class="form-control" aria-describedby="passwordHelpInline" onChange={handleDob} name='dob' value={dob}/>
+//     { dobError ? <span style={{color:"red"}}>{dobError}</span> : " "} 
+//   </div>
+  
+
+//   <div class="col-md-1">
+
+//     <label for="pob" class="col-form-label">Place of Birth</label>
+//     </div>
+//     <div class="col-md-3">
+//     <input type="text" id="pob" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePob} name='pob' value={pob}/>
+//     { pobError ? <span style={{color:"red"}}>{pobError}</span> : " "} 
+//   </div>
+//   </div>
+
+
+//   <div class="row g-3 align-items-center mt-4">
+//   <div class="col-md-1">
+//     <label for="inputPassword6" class="col-form-label">First Language</label>
+//     </div>
+
+//     <div class="col-md-3">
+//   <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+//   <option selected disabled>Language Preference</option>
+//   <option value="1">Hindi</option>
+//   <option value="2">English</option>
+//   <option value="3">French</option>
+//   <option value="4">Other</option>
+//   </select>
+//   </div>
+//   </div>
+
+// <div class="row g-3 align-items-center mt-4">
+//   <div class="col-md-1">
+//     <label for="inputPassword6" class="col-form-label">City</label>
+//     </div>
+
+//     <div class="col-md-3">
+//     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+//   <option selected disabled>Select City</option>
+//   <option value="1">Indore</option>
+//   <option value="2">Bhopal</option>
+//   <option value="3">Mumbai</option>
+//   <option value="4">Banglore</option>
+//   <option value="4">Other</option>
+
+// </select>
+//   </div>
+
+//   <div class="col-md-1">
+//     <label for="inputPassword6" class="col-form-label">State</label>
+//     </div>
+
+//     <div class="col-md-3">
+//     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+//   <option selected disabled>Select State</option>
+//   <option value="1">MP</option>
+//   <option value="2">Gujarat</option>
+//   <option value="3">Maharashtra</option>
+//   <option value="4">Rajasthan</option>
+//   <option value="4">Other</option>
+
+// </select>
+//   </div>
+//   </div>
+
+
+//   <div class="row g-3 align-items-center mt-3">
+//   <div class="col-md-1">
+//     <label for="country" class="col-form-label">Country</label>
+//     </div>
+
+//     <div class="col-md-3">
+//     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+//   <option selected disabled>Select Country</option>
+//   <option value="1">India</option>
+//   <option value="2">Afghanistan</option>
+//   <option value="3">Pakistan</option>
+//   <option value="4">America</option>
+//   <option value="4">Other</option>
+
+// </select>
+//   </div>
+
+//   <div class="col-md-1">
+//     <label for="inputPassword6" class="col-form-label">PinCode</label>
+//     </div>
+
+//     <div class="col-md-3">
+//     <input type="number" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" name='pin' value={pin} onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+//   </div>
+
+
+//   <div class="row g-3 mt-3">
+//   <div class="col-md-3">
+// <h4>Father Details: </h4>
+//  </div>
+//   </div>
+
+//   <div class="row g-3 align-items-center mt-4">
+//   <div class="col-md-1">
+//     <label for="username" class="col-form-label">First Name</label>
+//     </div>
+
+//     <div class="col-md-2">
+//     <input type="text" id="username" class="form-control" aria-describedby="passwordHelpInline" onChange={handleName} placeholder="Enter in Firstname Middlename Lastname Format" name='name' value={name}/>
+//     { nameError ? <span style={{color:"red"}}>{nameError}</span> : " "} 
+//   </div>
+
+//   <div class="col-md-2">
+//     <label for="username" class="col-form-label">Middle Name</label>
+//     </div>
+
+//     <div class="col-md-2">
+//     <input type="text" id="username" class="form-control" aria-describedby="passwordHelpInline" onChange={handleName} placeholder="Enter in Firstname Middlename Lastname Format" name='name' value={name}/>
+//     { nameError ? <span style={{color:"red"}}>{nameError}</span> : " "} 
+//   </div>
+
+//   <div class="col-md-1">
+//     <label for="username" class="col-form-label">Last Name</label>
+//     </div>
+
+//     <div class="col-md-2">
+//     <input type="text" id="username" class="form-control" aria-describedby="passwordHelpInline" onChange={handleName} placeholder="Enter in Firstname Middlename Lastname Format" name='name' value={name}/>
+//     { nameError ? <span style={{color:"red"}}>{nameError}</span> : " "} 
+//   </div>
+//   </div>
+
+
+//   <div class="row g-3 align-items-center mt-3">
+//   <div class="col-md-1">
+//     <label for="country" class="col-form-label">Email </label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+//   </div>
+
+//   <div class="row g-3 align-items-center mt-3">
+//   <div class="col-md-1">
+//     <label for="country" class="col-form-label">Educational Qualification</label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+
+//   <div class="col-md-1">
+//     <label for="country" class="col-form-label">Profession</label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+//   </div>
+
+//   <div class="row g-3 align-items-center mt-3">
+//   <div class="col-md-1">
+//     <label for="country" class="col-form-label">Designation</label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+
+//   <div class="col-md-1">
+//     <label for="country" class="col-form-label">Phone No</label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+//   </div>
+
+//   <div class="row g-3 mt-3">
+//   <div class="col-md-3">
+// <h4>Emergency Contact List: </h4>
+//  </div>
+//   </div>
+
+
+
+//   <div class="row g-3 align-items-center mt-3">
+//   <div class="col-md-1">
+//     <label for="relation" class="col-form-label">Relation Number</label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <input type="number" id="relation" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+
+//   <div class="col-md-1">
+//     <label for="reference" class="col-form-label">Reference Details</label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <input type="text" id="reference" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+
+
+//   </div>
+
+
+//   <div class="row g-3 align-items-center mt-3">
+//   <div class="col-md-1">
+//     <label for="refth" class="col-form-label">Reference Through</label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <input type="text" id="refth" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+
+//   <div class="col-md-1">
+//     <label for="addr" class="col-form-label"> Address with Tel No.</label>
+//     </div>
+
+
+//     <div class="col-md-3">
+//     <textarea id="addr" class="form-control" aria-describedby="passwordHelpInline" onChange={handlePin} />
+//     { pinError ? <span style={{color:"red"}}>{pinError}</span> : " "} 
+//   </div>
+
+//   </div>
+
+
+
+//   <div class="row g-3 align-items-center">
+//   <div class="col-auto">
+// <input type="submit" value="Submit" />
+//   </div>
+//   </div>
+
+//   </div>
+
+
+//     </form>
+//   )
+// }
+
+
+function Table(props) {
+  return (
+    <div>
+      <div class="table-data">
+        <table class="table ">
+          <thead>
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name </th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.TableData.map((list) => {
+              return (
+                <tr>
+                  <td>{list.firstName}</td>
+                  <td>{list.lastName}</td>
+                  <td>{list.email}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
